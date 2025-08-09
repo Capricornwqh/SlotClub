@@ -48,16 +48,21 @@ import (
 	_ "github.com/slotopol/server/game/slot/betsoft/atthemovies"
 
 	// CT Interactive
+	_ "github.com/slotopol/server/game/slot/ct/britania"
+	_ "github.com/slotopol/server/game/slot/ct/chillibomb"
 	_ "github.com/slotopol/server/game/slot/ct/cloverparty"
 	_ "github.com/slotopol/server/game/slot/ct/dancingbananas"
 	_ "github.com/slotopol/server/game/slot/ct/doublehothabanero"
+	_ "github.com/slotopol/server/game/slot/ct/fortunepyramid"
 	_ "github.com/slotopol/server/game/slot/ct/fruitgalaxy"
 	_ "github.com/slotopol/server/game/slot/ct/fusionfruitbeat"
 	_ "github.com/slotopol/server/game/slot/ct/groovyautomat"
 	_ "github.com/slotopol/server/game/slot/ct/hitthehot"
-	_ "github.com/slotopol/server/game/slot/ct/thegreatcabaret"
+	_ "github.com/slotopol/server/game/slot/ct/sapphirelagoon"
+	_ "github.com/slotopol/server/game/slot/ct/treasurehill"
 	_ "github.com/slotopol/server/game/slot/ct/tropicdancer"
 	_ "github.com/slotopol/server/game/slot/ct/vikingsfun"
+	_ "github.com/slotopol/server/game/slot/ct/wildhills"
 	_ "github.com/slotopol/server/game/slot/ct/winstorm"
 
 	// IGT

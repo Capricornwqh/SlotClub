@@ -39,12 +39,14 @@
 'Book of Ra' Novomatic 5x3 videoslot
 'Book of Ra Deluxe' Novomatic 5x3 videoslot
 'Book of Set' AGT 5x3 videoslot
+'Britania' CT Interactive 5x3 videoslot
 'Captain's Treasure' Playtech 5x3 videoslot
 'Cash Farm' Novomatic 5x3 cascade videoslot
 'Casino' AGT 5x4 videoslot
 'Champagne' Megajack 5x3 videoslot
 'Cherry Hot' AGT 5x3 videoslot
 'Chicago' Novomatic 5x3 videoslot
+'Chilli Bomb' CT Interactive 5x3 videoslot
 'Cleopatra' IGT 5x3 videoslot
 'Clover Party' CT Interactive 5x3 videoslot
 'Cold Spell' Novomatic 5x3 videoslot
@@ -78,6 +80,8 @@
 'Firefighters' AGT 5x3 videoslot
 'Flame Dancer' Novomatic 5x3 videoslot
 'Flowers' NetEnt 5x3 videoslot
+'Forest Nymph' CT Interactive 5x3 videoslot
+'Fortune Pyramid' CT Interactive 5x3 videoslot
 'Fortune Teller' Play'n GO 5x3 videoslot
 'Fruit Galaxy' CT Interactive 5x4 videoslot
 'Fruit Queen' AGT 5x6 videoslot
@@ -116,7 +120,9 @@
 'Inferno' Novomatic 5x3 videoslot
 'Infinity Gems' AGT 5x3 videoslot
 'Irish Luck' Playtech 5x3 videoslot
+'Jade Heaven' CT Interactive 5x3 videoslot
 'Jaguar Moon' Novomatic 5x3 videoslot
+'Jaguar Warrior' CT Interactive 5x3 videoslot
 'Jewels' Novomatic 5x3 videoslot
 'Jewels 4 All' Novomatic 5x3 videoslot
 'Joker Dolphin' Novomatic 5x3 videoslot
@@ -137,6 +143,7 @@
 'Lucky Lady's Charm' Novomatic 5x3 videoslot
 'Lucky Lady's Charm Deluxe' Novomatic 5x3 videoslot
 'Lucky Slot' AGT 5x3 videoslot
+'Magician Dreaming' CT Interactive 5x3 videoslot
 'Marco Polo' Novomatic 5x3 videoslot
 'Mega Joker' Novomatic 5x4 videoslot
 'Mega Shine' AGT 5x3 videoslot
@@ -168,6 +175,7 @@
 'STALKER' AGT 5x3 videoslot
 'Safari Heat' Playtech 5x3 videoslot
 'Santa' AGT 4x4 videoslot
+'Sapphire Lagoon' CT Interactive 5x3 videoslot
 'Secret Elixir' Novomatic 5x3 videoslot
 'Secret Forest' Novomatic 5x3 videoslot
 'Secret Of Horus' NetEnt 5x3 videoslot
@@ -191,6 +199,7 @@
 'Thrill Spin' NetEnt 5x3 videoslot
 'Tiki Wonders' NetEnt 5x3 videoslot
 'Time Machine II' AGT 5x3 videoslot
+'Treasure Hill' CT Interactive 5x4 videoslot
 'Triple Diamond' IGT 3x3 videoslot
 'Trolls' NetEnt 5x3 videoslot
 'Tropic Dancer' CT Interactive 5x3 videoslot
@@ -205,17 +214,18 @@
 'Viking's Treasure' NetEnt 5x3 videoslot
 'Vikings Fun' CT Interactive 5x3 videoslot
 'Voodoo Vibes' NetEnt 5x3 videoslot
+'Wild Hills' CT Interactive 5x3 videoslot
 'Wild West' AGT 5x4 videoslot
 'Wild Witches' NetEnt 5x3 videoslot
 'Win Storm' CT Interactive 5x3 cascade videoslot
 'Wizard' AGT 5x4 videoslot
 'Wolf Run' IGT 5x4 videoslot
 
-total: 208 games, 114 algorithms, 11 providers
+total: 218 games, 119 algorithms, 11 providers
 AGT: 60 games
 Aristocrat: 6 games
 BetSoft: 3 games
-CT Interactive: 13 games
+CT Interactive: 23 games
 IGT: 5 games
 Megajack: 4 games
 NetEnt: 22 games

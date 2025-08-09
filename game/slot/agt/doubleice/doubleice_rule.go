@@ -27,7 +27,7 @@ var LinePay = [9]float64{
 }
 
 // Bet lines
-var BetLines = slot.BetLinesAgt3x3[:]
+var BetLines = slot.BetLinesAgt3x3[:27]
 
 type Game struct {
 	slot.Screen3x3 `yaml:",inline"`
@@ -66,8 +66,7 @@ func (g *Game) FillMult() float64 {
 
 func (g *Game) Scanner(wins *slot.Wins) error {
 	var fm float64 // fill mult
-	for li := 1; li <= g.Sel; li++ {
-		var line = BetLines[li-1]
+	for li, line := range BetLines[:g.Sel] {
 		var sym1, sym2, sym3 = g.LY(1, line), g.LY(2, line), g.LY(3, line)
 		if sym1 == sym2 && sym1 == sym3 {
 			if fm == 0 { // lazy calculation
@@ -78,7 +77,7 @@ func (g *Game) Scanner(wins *slot.Wins) error {
 				Mult: fm,
 				Sym:  sym1,
 				Num:  3,
-				Line: li,
+				Line: li + 1,
 				XY:   line, // whole line is used
 			})
 		}

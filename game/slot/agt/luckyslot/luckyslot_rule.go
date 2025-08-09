@@ -67,7 +67,7 @@ func (g *Game) Scanner(wins *slot.Wins) error {
 func (g *Game) ScanLined(wins *slot.Wins) {
 	var reelwild [5]bool
 	for x := 1; x < 4; x++ { // 2, 3, 4 reel only
-		for y := 0; y < 3; y++ {
+		for y := range 3 {
 			if g.Scr[x][y] == wild {
 				reelwild[x] = true
 				break
@@ -75,9 +75,7 @@ func (g *Game) ScanLined(wins *slot.Wins) {
 		}
 	}
 
-	for li := 1; li <= g.Sel; li++ {
-		var line = BetLines[li-1]
-
+	for li, line := range BetLines[:g.Sel] {
 		var numl slot.Pos = 5
 		var syml = g.LY(1, line)
 		var x slot.Pos
@@ -97,7 +95,7 @@ func (g *Game) ScanLined(wins *slot.Wins) {
 				Mult: 1,
 				Sym:  syml,
 				Num:  numl,
-				Line: li,
+				Line: li + 1,
 				XY:   line.CopyL(numl),
 			})
 		}

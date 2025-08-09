@@ -30,7 +30,7 @@ var LinePay = [7][5]float64{
 }
 
 // Bet lines
-var BetLines = slot.BetLinesNvm5x4[:]
+var BetLines = slot.BetLinesNvm5x4[:40]
 
 type Game struct {
 	slot.Screen5x4 `yaml:",inline"`
@@ -93,9 +93,7 @@ func (g *Game) Scanner(wins *slot.Wins) (err error) {
 		})
 		return
 	}
-	for li := 1; li <= g.Sel; li++ {
-		var line = BetLines[li-1]
-
+	for li, line := range BetLines[:g.Sel] {
 		var numl slot.Pos = 5
 		var syml = g.LY(1, line)
 		var x slot.Pos
@@ -113,7 +111,7 @@ func (g *Game) Scanner(wins *slot.Wins) (err error) {
 				Mult: 1,
 				Sym:  syml,
 				Num:  numl,
-				Line: li,
+				Line: li + 1,
 				XY:   line.CopyL(numl),
 			})
 		}

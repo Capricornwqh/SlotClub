@@ -1,6 +1,6 @@
-package thegreatcabaret
+package fortunepyramid
 
-// See: https://www.slotsmate.com/software/ct-interactive/the-great-cabaret
+// See: https://www.slotsmate.com/software/ct-interactive/fortune-pyramid
 
 import (
 	_ "embed"
@@ -8,36 +8,28 @@ import (
 	"github.com/slotopol/server/game/slot"
 )
 
-//go:embed thegreatcabaret_reel.yaml
+//go:embed fortunepyramid_reel.yaml
 var reels []byte
 
 var ReelsMap = slot.ReadMap[*slot.Reels5x](reels)
 
 // Lined payment.
-var LinePay = [13][5]float64{
-	{0, 10, 250, 2500, 10000}, //  1 wild
-	{},                        //  2 scatter
-	{0, 2, 25, 125, 750},      //  3 red
-	{0, 2, 25, 125, 750},      //  4 blonde
-	{0, 0, 20, 100, 400},      //  5 pianist
-	{0, 0, 15, 75, 250},       //  6 accordionist
-	{0, 0, 15, 75, 250},       //  7 violinist
-	{0, 0, 10, 50, 125},       //  8 ace
-	{0, 0, 10, 50, 125},       //  9 king
-	{0, 0, 5, 25, 100},        // 10 queen
-	{0, 0, 5, 25, 100},        // 11 jack
-	{0, 0, 5, 25, 100},        // 12 ten
-	{0, 2, 5, 25, 100},        // 13 nine
+var LinePay = [8][5]float64{
+	{0, 0, 40, 750, 1000}, // 1 wild
+	{},                    // 2 scatter
+	{0, 0, 10, 50, 500},   // 3 scarab
+	{0, 0, 10, 40, 200},   // 4 cross
+	{0, 0, 10, 40, 200},   // 5 eye
+	{0, 0, 5, 20, 100},    // 6 ring
+	{0, 0, 5, 20, 100},    // 7 cup
+	{0, 0, 5, 20, 100},    // 8 bowl
 }
 
 // Scatters payment.
-var ScatPay = [5]float64{0, 2, 5, 10, 100} // 2 scatter
-
-// Scatter freespins table
-var ScatFreespin = [5]int{0, 0, 15, 15, 15} // 2 scatter
+var ScatPay = [5]float64{0, 0, 5, 20, 500} // 2 scatter
 
 // Bet lines
-var BetLines = slot.BetLinesMgj[:10]
+var BetLines = slot.BetLinesAgt5x3[:20]
 
 type Game struct {
 	slot.Screen5x3 `yaml:",inline"`
@@ -71,10 +63,7 @@ func (g *Game) Scanner(wins *slot.Wins) error {
 
 // Lined symbols calculation.
 func (g *Game) ScanLined(wins *slot.Wins) {
-	for li := 1; li <= g.Sel; li++ {
-		var line = BetLines[li-1]
-
-		var mw float64 = 1 // mult wild
+	for li, line := range BetLines[:g.Sel] {
 		var numw, numl slot.Pos = 0, 5
 		var syml slot.Sym
 		var x slot.Pos
@@ -84,7 +73,6 @@ func (g *Game) ScanLined(wins *slot.Wins) {
 				if syml == 0 {
 					numw = x
 				}
-				mw = 2
 			} else if syml == 0 {
 				syml = sx
 			} else if sx != syml {
@@ -94,36 +82,28 @@ func (g *Game) ScanLined(wins *slot.Wins) {
 		}
 
 		var payw, payl float64
-		if numw >= 2 {
+		if numw >= 3 {
 			payw = LinePay[wild-1][numw-1]
 		}
-		if numl >= 2 && syml > 0 {
+		if numl >= 3 && syml > 0 {
 			payl = LinePay[syml-1][numl-1]
 		}
-		if payl*mw > payw {
-			var mm float64 = 1 // mult mode
-			if g.FSR > 0 {
-				mm = 3
-			}
+		if payl > payw {
 			*wins = append(*wins, slot.WinItem{
 				Pay:  g.Bet * payl,
-				Mult: mw * mm,
+				Mult: 1,
 				Sym:  syml,
 				Num:  numl,
-				Line: li,
+				Line: li + 1,
 				XY:   line.CopyL(numl),
 			})
 		} else if payw > 0 {
-			var mm float64 = 1 // mult mode
-			if g.FSR > 0 && numw < 5 {
-				mm = 3
-			}
 			*wins = append(*wins, slot.WinItem{
 				Pay:  g.Bet * payw,
-				Mult: mm,
+				Mult: 1,
 				Sym:  wild,
 				Num:  numw,
-				Line: li,
+				Line: li + 1,
 				XY:   line.CopyL(numw),
 			})
 		}
@@ -132,19 +112,14 @@ func (g *Game) ScanLined(wins *slot.Wins) {
 
 // Scatters calculation.
 func (g *Game) ScanScatters(wins *slot.Wins) {
-	if count := g.ScatNum(scat); count >= 2 {
-		var mm float64 = 1 // mult mode
-		if g.FSR > 0 {
-			mm = 3
-		}
-		var pay, fs = ScatPay[count-1], ScatFreespin[count-1]
+	if count := g.ScatNum(scat); count >= 3 {
+		var pay = ScatPay[count-1]
 		*wins = append(*wins, slot.WinItem{
 			Pay:  g.Bet * float64(g.Sel) * pay,
-			Mult: mm,
+			Mult: 1,
 			Sym:  scat,
 			Num:  count,
 			XY:   g.ScatPos(scat),
-			Free: fs,
 		})
 	}
 }
